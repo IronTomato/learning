@@ -37,22 +37,36 @@
 2. 工厂方法 Factory Method
 3. 抽象工厂 Abstract Factory
 4. 单例 Singleton
+	* 保证一个类仅有一个实例，并提供一个访问它的全局访问点
+	* 有类的静态字段、注册表两种实现方式
 5. 建造 Builder
 6. 原型 Prototype
+
 ###结构模式###
 7. 适配器 Adapter
 	* JDBC驱动就是适配器模式实现
 8. 合成 Composite
 9. 装饰 Decorator
 10. 代理 Proxy
+	* 代理对象与被代理对象实现相同的接口，并持有被代理对象，主要功能由被代理对象实现，代理对象可以添加额外的控制，而这对调用者来说是透明的
+	* Spring AOP
+	* `Collections.synchronizedCollection()`方法
 11. 享元 Flyweight Pattern
+	* 程序中有大量轻量级对象，将它们设计为可共享的，减少对象的创建、销毁
+	* `java.lang.String`
 12. 门面/外观 Facade
+	* 一个组件，模块，内部实现比较复杂，但是对于外部调用者来说，有相对简单的调用接口
+	* JSoup中`Element`的`select()`方法
 13. 桥梁/桥接 Bridge
+
 ###行为模式###
 14. 不变 Immutable
+	* 对象没有可变的状态，通常所有字段都是`final`，于是可以共享，线程安全
+	* `java.lang.String`
+	* code/lab/src/util/Range
 15. 策略 Strategy
 16. 模板方法 Template Method
-	* 通过委派，组合调用基本方法完成功能，基本功能则要由子类实现
+	* 通过调用基本方法完成功能，基本方法则要由子类实现
 	* HttpServlet的service()方法
 	* Java8添加的大量default method
 17. 观察者 Observer
