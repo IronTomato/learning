@@ -92,19 +92,45 @@ public class TestRange {
         // rg.forEach(System.out::println);
         // rg.stream().map(i->i*2).forEach(System.out::println);
         System.out.println(rg.stream().reduce((a, b) -> a + b).get());
-        Range.from(1).to(20).by(1).stream().map(this::fab).map(i->i+" ").forEach(System.out::print);
+        Range.from(1).to(20).by(1).stream().map(this::fab).map(i -> i + " ").forEach(System.out::print);
     }
-    
-//    @Test
-//    public void testStream2(){
-//        Range.from(1).to(Integer.MAX_VALUE).byDefault().stream().forEach(System.out::println);
-//    }
+
+    @Test
+    public void testCache() {
+        assertNotNull(Range.getCache(100));
+    }
+
+    // @Test
+    // public void testStream2(){
+    // Range.from(1).to(Integer.MAX_VALUE).byDefault().stream().forEach(System.out::println);
+    // }
 
     private int fab(int n) {
         if (n == 1 || n == 2) {
             return 1;
         } else {
             return fab(n - 1) + fab(n - 2);
+        }
+    }
+
+    @Test
+    public void testPerformance1() {
+
+        for (int i = 0; i < 1000000; i++) {
+            for (int j = 0; j < 100; j++) {
+                int k = j;
+                k += 100;
+            }
+        }
+    }
+
+    @Test
+    public void testPerformance2() {
+
+        for (int i = 0; i < 1000000; i++) {
+            Range.of(0, 100).forEach(k -> {
+                k += 100;
+            });
         }
     }
 }

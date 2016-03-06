@@ -1,4 +1,4 @@
-package util;
+ï»¿package util;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -7,6 +7,8 @@ import java.util.stream.StreamSupport;
 
 public class Range implements Iterable<Integer> {
 
+    private static final int CACHE_SIZE = 128;
+    
     private Range(int start, int end, int step, boolean containsEnd) {
         this.start = start;
         this.end = end;
@@ -18,6 +20,25 @@ public class Range implements Iterable<Integer> {
     private final int end;
     private final int step;
     private final boolean containsEnd;
+
+    private static final Range[] cache = new Range[CACHE_SIZE];
+
+    static {
+        for (int i = 0; i < CACHE_SIZE; i++) {
+            cache[i] = new Range(0,i,1,false);
+        }
+    }
+
+     public static Range getCache(int i){
+     return cache[i];
+     }
+
+    public static Range of(int start, int end) {
+//        if(end < 128){
+//            return cache[end];
+//        }
+        return Range.from(start).until(end).byDefault();
+    }
 
     public static Builder from(int start) {
         return new Builder(start);
@@ -50,7 +71,7 @@ public class Range implements Iterable<Integer> {
 
         @Override
         public Integer next() {
-            if(!hasNext())
+            if (!hasNext())
                 throw new NoSuchElementException();
             current = current + step;
             return current;
@@ -70,8 +91,8 @@ public class Range implements Iterable<Integer> {
         }
 
         public Builder to(int end) {
-            if(endSeted)
-                throw new IllegalStateException("²»ÄÜÖØ¸´ÉèÖÃend");
+            if (endSeted)
+                throw new IllegalStateException("ä¸èƒ½é‡å¤è®¾ç½®end");
             this.end = end;
             this.endSeted = true;
             this.containsEnd = true;
@@ -79,8 +100,8 @@ public class Range implements Iterable<Integer> {
         }
 
         public Builder until(int end) {
-            if(endSeted)
-                throw new IllegalStateException("²»ÄÜÖØ¸´ÉèÖÃend");
+            if (endSeted)
+                throw new IllegalStateException("ä¸èƒ½é‡å¤è®¾ç½®end");
             this.end = end;
             this.endSeted = true;
             this.containsEnd = false;
@@ -88,11 +109,15 @@ public class Range implements Iterable<Integer> {
         }
 
         public Range by(int step) {
-            if(!endSeted)
-                throw new IllegalStateException("»¹Î´ÉèÖÃend");
+            if (!endSeted)
+                throw new IllegalStateException("è¿˜æœªè®¾ç½®end");
             if ((end > start && step < 0) || (end < start && step > 0)) {
-                throw new IllegalArgumentException("step ±ØĞë´Ó start Ö¸Ïò end");
+                throw new IllegalArgumentException("step å¿…é¡»ä» start æŒ‡å‘ end");
             }
+//            if(start == 0 && end < CACHE_SIZE && !containsEnd && (step == 1 || step == -1)){
+//                return cache[end];
+//            }
+            
             return new Range(start, end, step, containsEnd);
         }
 
