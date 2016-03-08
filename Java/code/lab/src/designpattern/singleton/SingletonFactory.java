@@ -7,7 +7,7 @@ public class SingletonFactory {
     private static Map<Class<?>, Object> register = new HashMap<>();
 
     private SingletonFactory() {
-    };
+    }
 
     public static Object getSingleton(Class<?> clazz) {
         if (register.containsKey(clazz)) {
