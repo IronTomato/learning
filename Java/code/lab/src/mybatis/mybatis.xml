@@ -16,7 +16,7 @@
     </environments>
 
     <mappers>
-        <!-- <mapper resource="wnb/demo/mybatis/mapping/CityMapper.xml" /> -->
+        <mapper resource="mybatis/mappers/CityMapper.xml" />
         <mapper class="mybatis.CityDao"/>
     </mappers>
 

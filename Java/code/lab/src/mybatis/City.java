@@ -2,15 +2,15 @@ package mybatis;
 
 public class City {
 
-    private int id;
+    private Integer id;
     private String name;
     private String countryCode;
     private String district;
-    private int population;
+    private Integer population;
     /**
      * @return the id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
     /**
@@ -34,13 +34,13 @@ public class City {
     /**
      * @return the population
      */
-    public int getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     /**
@@ -64,7 +64,7 @@ public class City {
     /**
      * @param population the population to set
      */
-    public void setPopulation(int population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
     /* (non-Javadoc)
