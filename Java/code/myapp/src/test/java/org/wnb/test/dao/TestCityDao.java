@@ -10,12 +10,15 @@ import org.wnb.entity.City;
 public class TestCityDao {
 
     CityDao dao = new CityDaoImpl();
-    
-    @Test
+
+     @Test
     public void testFindById() {
         City city = dao.findById(1);
         assertEquals(city.getId().intValue(), 1);
         System.out.println(city);
+
     }
+
+
 
 }
