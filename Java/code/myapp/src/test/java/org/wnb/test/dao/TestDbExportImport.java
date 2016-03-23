@@ -1,6 +1,7 @@
 package org.wnb.test.dao;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
 
 import java.io.File;
 
@@ -13,5 +14,4 @@ public class TestDbExportImport {
         DbExportImport.exportTables(JdbcUtil.getConnection(), new String[] { "city", "country", "countrylanguage" },
                 new File("world.xml"));
     }
-
 }
