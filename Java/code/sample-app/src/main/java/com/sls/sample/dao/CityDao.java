@@ -10,7 +10,7 @@ public interface CityDao {
 	
 	List<City> findAll();
 	
-	void add(City city);
+	void insert(City city);
 	
 	void update(City city);
 	

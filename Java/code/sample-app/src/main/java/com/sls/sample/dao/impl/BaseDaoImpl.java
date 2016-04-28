@@ -12,7 +12,7 @@ public abstract class BaseDaoImpl<T, PK> extends SqlSessionDaoSupport implements
 		return getNamespace() + "." + methodName.name();
 	}
 
-	public void add(T entity) {
+	public void insert(T entity) {
 		getSqlSession().insert(getFullMethodName(MethodName.insert), entity);
 	}
 

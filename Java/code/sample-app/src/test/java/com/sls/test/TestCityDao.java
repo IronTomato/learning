@@ -18,32 +18,32 @@ import com.sls.sample.entity.City;
 public class TestCityDao extends AbstractJUnit4SpringContextTests {
 
 	@Autowired
-	CityDao dao = new CityDaoImpl();
+	CityDao dao;
 
 	@Test
 	public void testFindById() {
 		City city = dao.findById(455);
 		assertEquals(city.getId().intValue(), 455);
 		System.out.println(city);
-		for(byte b : city.getName().getBytes()){
+		for (byte b : city.getName().getBytes()) {
 			System.out.format("%02X ", b);
 		}
 	}
 
-//	@Test
+	// @Test
 	public void testFindAll() {
 		List<City> list = dao.findAll();
 		assertEquals(list.size(), 100);
 	}
 
 	// @Test
-	public void testAdd() {
+	public void testInsert() {
 		City city = new City();
 		city.setId(5000);
 		city.setName("SkyCity");
 		city.setDistrict("Sky");
 		city.setPopulation(2);
-		dao.add(city);
+		dao.insert(city);
 	}
 
 	// @Test

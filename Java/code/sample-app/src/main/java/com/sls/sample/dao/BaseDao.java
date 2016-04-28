@@ -2,7 +2,7 @@ package com.sls.sample.dao;
 
 public interface BaseDao<T,PK> {
 
-	void add(T entity);
+	void insert(T entity);
 	
 	void delete(T entity);
 	

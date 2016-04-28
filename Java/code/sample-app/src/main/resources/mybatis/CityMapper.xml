@@ -6,11 +6,12 @@
 		<result column="name" property="name" jdbcType="CHAR" />
 		<result column="district" property="district" jdbcType="CHAR" />
 		<result column="population" property="population" jdbcType="INTEGER" />
+		<result column="countryCode" property="countryCode" jdbcType="CHAR" />
 	</resultMap>
 
 	<select id="findById" parameterType="java.lang.Integer"
 		resultMap="cityMap">
-		select id,name,district,population from city where id=#{id}
+		select id,name,district,population,countryCode from city where id=#{id}
 	</select>
 
 	<select id="findAll" resultMap="cityMap">
@@ -20,13 +21,14 @@
 
 	<insert id="add" parameterType="com.sls.sample.entity.City">
 		insert into city
-		(id,name,district,population,countrycode)
-		values(#{id},#{name},#{district},#{population},'CHN')
+		(id,name,district,population,countryCode)
+		values(#{id},#{name},#{district},#{population},#{countryCode})
 	</insert>
 
 	<update id="update" parameterType="com.sls.sample.entity.City">
 		update city set
-		name=#{name},district=#{district},population=#{population} where
+		name=#{name},district=#{district},population=#{population},countryCode=#{countryCode}
+		where
 		id=#{id}
 	</update>
 

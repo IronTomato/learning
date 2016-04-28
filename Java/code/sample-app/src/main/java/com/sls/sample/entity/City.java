@@ -3,11 +3,13 @@ package com.sls.sample.entity;
 public class City {
 
 	private Integer id;
-	
+
 	private String name;
-	
+
+	private String countryCode;
+
 	private String district;
-	
+
 	private Integer population;
 
 	public Integer getId() {
@@ -42,10 +44,19 @@ public class City {
 		this.population = population;
 	}
 
+	public String getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", name=" + name + ", district=" + district + ", population=" + population + "]";
+		return "City [id=" + id + ", name=" + name + ", countryCode=" + countryCode + ", district=" + district
+				+ ", population=" + population + "]";
 	}
-	
-	
+
+
 }
