@@ -1,0 +1,7 @@
+/bin/
+/target/
+.classpath
+.settings
+/git-repository/
+.project
+/workspace-jee/

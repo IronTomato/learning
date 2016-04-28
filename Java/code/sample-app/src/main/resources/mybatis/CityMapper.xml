@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.xml.CityMapper">
+	<resultMap type="com.sls.sample.entity.City" id="cityMap">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="CHAR" />
+		<result column="district" property="district" jdbcType="CHAR" />
+		<result column="population" property="population" jdbcType="INTEGER" />
+		<result column="countryCode" property="countryCode" jdbcType="CHAR" />
+	</resultMap>
+
+	<select id="findById" parameterType="java.lang.Integer"
+		resultMap="cityMap">
+		select id,name,district,population,countryCode from city where id=#{id}
+	</select>
+
+	<select id="findAll" resultMap="cityMap">
+		select
+		id,name,district,population from city limit 100
+	</select>
+
+	<insert id="add" parameterType="com.sls.sample.entity.City">
+		insert into city
+		(id,name,district,population,countryCode)
+		values(#{id},#{name},#{district},#{population},#{countryCode})
+	</insert>
+
+	<update id="update" parameterType="com.sls.sample.entity.City">
+		update city set
+		name=#{name},district=#{district},population=#{population},countryCode=#{countryCode}
+		where
+		id=#{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from city where
+		id=#{id}
+	</delete>
+
+</mapper>
