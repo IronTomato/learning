@@ -87,6 +87,11 @@
       <artifactId>activemq-all</artifactId>
       <version>5.13.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.14</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>myapp</finalName>
