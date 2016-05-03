@@ -3,6 +3,7 @@ package org.wnb.test.poi;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
@@ -56,11 +57,32 @@ public class POIExcelHelper {
             columnCount++;
             return this;
         }
-        
-        public static class TableRow{
+
+        public TableRow addRow() {
+            Row row = sheet.getRow(positionRowIndex + rowCount + 1);
+            rowCount++;
+            return new TableRow(this, row);
+        }
+
+        public static class TableRow {
             private Table table;
-            private TableRow(Table table){
+            private Row row;
+
+            private TableRow(Table table, Row row) {
                 this.table = table;
+                this.row = row;
+            }
+
+            public Cell getCell(String columnName) {
+                if (!table.columnNameMap.containsKey(columnName))
+                    throw new RuntimeException("Column name [" + columnName + "] not exist.");
+
+                int columnIndex = table.columnNameMap.get(columnName).intValue();
+                Cell cell = row.getCell(columnIndex);
+                if (cell == null) {
+                    cell = row.createCell(columnIndex);
+                }
+                return cell;
             }
         }
     }
