@@ -1,8 +1,13 @@
 package org.wnb.test.poi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
@@ -32,12 +37,13 @@ public class POIExcelHelper {
         }
     }
 
-    public static class Table {
+    public static class Table implements Iterable<Table.TableRow> {
         private SheetHelper sheet;
         private int positionRowIndex;
         private int positionColumnIndex;
         private int rowCount = 0;
         private int columnCount = 0;
+        private List<Table.TableRow> tableRows = new ArrayList<>();
 
         private Map<String, Integer> columnNameMap = new HashMap<>();
 
@@ -56,11 +62,52 @@ public class POIExcelHelper {
             columnCount++;
             return this;
         }
+
+        public TableRow creatRow() {
+            Row row = sheet.getRow(positionRowIndex + rowCount + 1);
+            rowCount++;
+            TableRow tableRow = this.new TableRow(row);
+            tableRows.add(tableRow);
+
+            return tableRow;
+        }
+
+        @Override
+        public Iterator<TableRow> iterator() {
+            return tableRows.iterator();
+        }
+
+        public class TableRow {
+            private Row row;
+
+            private TableRow( Row row) {
+                this.row = row;
+            }
+
+            public Cell getCell(String columnName) {
+                if (!Table.this.columnNameMap.containsKey(columnName))
+                    throw new NoSuchElementException("Column name [" + columnName + "] not exist.");
+
+                int columnIndex = Table.this.columnNameMap.get(columnName).intValue();
+                Cell cell = row.getCell(columnIndex);
+                if (cell == null) {
+                    cell = row.createCell(columnIndex);
+                }
+                return cell;
+            }
+        }
         
-        public static class TableRow{
-            private Table table;
-            private TableRow(Table table){
-                this.table = table;
+        private class Merger{
+            private String mergeColumnName;
+            private Merger(String mergeColumnName){
+                this.mergeColumnName = mergeColumnName;
+            }
+            
+            public void on(String conditionColumnName){
+                
+                for(TableRow row:Table.this){
+                    
+                }
             }
         }
     }
