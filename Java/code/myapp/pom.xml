@@ -92,6 +92,11 @@
       <artifactId>poi</artifactId>
       <version>3.14</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>19.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>myapp</finalName>
