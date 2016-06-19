@@ -8,7 +8,7 @@ log4j2的SMTPAppender支持以SMTP协议发送日志到邮件，当系统出现�
 官方文档
 --------
 
-先看一下SMTPAppender的官方文档以及示例：
+先看一下SMTPAppender的官方文档以及示例[官方文档以及示例](http://logging.apache.org/log4j/2.x/manual/appenders.html#SMTPAppender)：
 
 
 <table border="0" class="bodyTable"><caption align="top">SMTPAppender Parameters</caption>
