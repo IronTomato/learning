@@ -1,4 +1,4 @@
-练习代码和笔记
+练习代码和笔记（此目录页长期未更新，以实际内容为准）
 
     Java/code/lab/src  
         ├─algorithm
