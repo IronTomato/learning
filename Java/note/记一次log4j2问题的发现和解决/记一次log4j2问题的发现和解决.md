@@ -33,7 +33,7 @@
 
 之后我继续进行测试，在一次重启项目之后，问题出现了，日志文件没有任何新增的日志！但是程序运行一切正常，控制台也都正确输出了日志。  
 我在日志文件里搜索本应出现的那条日志的关键字，居然搜到了，而且从这条日志的时间来看，的确是最新的一条，不过它不是出现在日志文件的最后，而是出现在了中间。上下扫了一眼日志时间，发现时间顺序是混乱的，我意识到可能是log4j2写入文件的时候有问题。
-配置文件中写入文件使用的是FastRollingFileAppender，我对这个Appender的写入策略不了解，于是去官方的在线文档（http://logging.apache.org/log4j/2.x/manual/appenders.html）寻求资料。
+配置文件中写入文件使用的是FastRollingFileAppender，我对这个Appender的写入策略不了解，于是去官方的[在线文档](http://logging.apache.org/log4j/2.x/manual/appenders.html)寻求资料。
 在线文档介绍的是最新版（目前是2.6.1）的情况，而其中根本没有FastRollingFileAppender，我在另一个项目里引用最新版的包，使用IDE的类搜索功能去搜索FastRollingFileAppender，结果发现没有这个类。此时我想到，这有可能是一个有缺陷的类，所以在新版中被删除了。  
 既然官方文档没有介绍，我就借助搜索引擎，查到几条使用示例，与项目目前使用的没有太大区别，对解决问题没有什么帮助。
 
