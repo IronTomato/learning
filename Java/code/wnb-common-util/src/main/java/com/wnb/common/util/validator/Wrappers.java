@@ -21,6 +21,6 @@ public class Wrappers {
     }
 
     public static <T> ClassWrapper<T> is(Class<T> clazz){
-        return new ClassWrapper(clazz);
+        return new ClassWrapper<T>(clazz);
     }
 }

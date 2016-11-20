@@ -10,8 +10,6 @@ import java.util.*;
 
 public class BooleanConverter {
 
-    private static final boolean DEBUG = true;
-
     public static boolean notNull(Object object) {
         return object != null;
     }
@@ -189,9 +187,6 @@ public class BooleanConverter {
     }
 
     public static boolean all(boolean... values) {
-        if (DEBUG) {
-            System.out.println("boolean...");
-        }
         if (bool(values)) {
             for (boolean value : values) {
                 if (!value) {

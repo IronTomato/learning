@@ -11,7 +11,7 @@ public class MapWrapper<K,V> {
     }
 
     public boolean containsKey(K key) {
-        return bool(map) && map.containsKey(key);
+        return bool(map) && bool(key) && map.containsKey(key);
     }
 
     public boolean containsValue(V value) {

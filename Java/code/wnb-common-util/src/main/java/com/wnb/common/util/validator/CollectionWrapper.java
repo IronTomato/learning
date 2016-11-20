@@ -12,7 +12,7 @@ public class CollectionWrapper<E> {
     }
 
     public boolean contains(E element) {
-        return bool(collection) && collection.contains(element);
+        return bool(collection) && bool(element) && collection.contains(element);
     }
 
     public boolean notEmpty() {

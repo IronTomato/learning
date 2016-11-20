@@ -13,16 +13,16 @@ public class GenericWrapper<T> {
         this.t = t;
     }
 
-    public boolean notNull(){
+    public boolean notNull() {
         return t != null;
     }
 
     public boolean hasMethod(String methodName, Class<?>... parameterTypes) {
-        return is(t.getClass()).hasMethod(methodName, parameterTypes);
+        return notNull() && is(t.getClass()).hasMethod(methodName, parameterTypes);
     }
 
     public boolean hasField(String fieldName) {
-        return is(t.getClass()).hasField(fieldName);
+        return notNull() && is(t.getClass()).hasField(fieldName);
     }
 
     public boolean in(Collection<T> collection) {
