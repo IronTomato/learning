@@ -1,6 +1,6 @@
 package com.wnb.common.util.validator;
 
-import static com.wnb.common.util.validator.Wrappers.is;
+import static com.wnb.common.util.validator.Validators.is;
 import static com.wnb.common.util.validator.BooleanConverter.bool;
 
 public class ClassWrapper<T> {
