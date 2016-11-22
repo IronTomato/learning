@@ -3,19 +3,16 @@ package com.wnb.common.util.validator;
 import java.util.Collection;
 
 
-public class CollectionValidator<T extends Collection<E>,E> extends GenericValidator<T>{
+public class CollectionValidator<C extends Collection<E>, E> extends IterableValidator<C, E> {
 
 
-    CollectionValidator(T collection) {
+    public CollectionValidator(C collection) {
         super(collection);
     }
 
-    public boolean empty(){
+    @Override
+    public boolean empty() {
         return isNull() || value.isEmpty();
-    }
-
-    public boolean notEmpty(){
-        return !empty();
     }
 
     public boolean contains(E element) {

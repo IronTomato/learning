@@ -5,7 +5,7 @@ import java.util.Map;
 public class MapValidator<M extends Map<K, V>, K, V> extends GenericValidator<M> {
 
 
-    MapValidator(M value) {
+    public  MapValidator(M value) {
         super(value);
     }
 

@@ -8,7 +8,7 @@ import static com.wnb.common.util.validator.Validators.*;
 public class GenericValidator<T> {
     protected T value;
 
-    GenericValidator(T value) {
+    public GenericValidator(T value) {
         this.value = value;
     }
 
@@ -26,6 +26,14 @@ public class GenericValidator<T> {
 
     public <M extends Map<T, V>, V> boolean in(M map) {
         return is(map).containsKey(value);
+    }
+
+    public boolean in(T[] array){
+        return is(array).contains(value);
+    }
+
+    public boolean ontOf(T... values){
+        return in(values);
     }
 
     public boolean suit(Predicate<T> predicate) {

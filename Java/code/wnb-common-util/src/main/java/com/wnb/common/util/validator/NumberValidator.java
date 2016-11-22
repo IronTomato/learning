@@ -1,7 +1,7 @@
 package com.wnb.common.util.validator;
 
 public class NumberValidator<N extends Number> extends GenericValidator<N> {
-    NumberValidator(N number) {
+    public NumberValidator(N number) {
         super(number);
     }
 

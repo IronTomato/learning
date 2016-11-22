@@ -1,7 +1,7 @@
 package com.wnb.common.util.validator;
 
 public class CharSequenceValidator<S extends CharSequence> extends GenericValidator<S> {
-    CharSequenceValidator(S sequence) {
+    public CharSequenceValidator(S sequence) {
         super(sequence);
     }
 

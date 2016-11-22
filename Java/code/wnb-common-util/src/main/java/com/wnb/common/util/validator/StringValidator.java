@@ -5,7 +5,7 @@ import static com.wnb.common.util.validator.Validators.*;
 public class StringValidator extends CharSequenceValidator<String> {
 
 
-    StringValidator(String sequence) {
+    public StringValidator(String sequence) {
         super(sequence);
     }
 

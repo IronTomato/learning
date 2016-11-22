@@ -1,7 +1,7 @@
 package com.wnb.common.util.validator;
 
 public class IntegerValidator extends NumberValidator<Integer> {
-    IntegerValidator(Integer integer) {
+    public IntegerValidator(Integer integer) {
         super(integer);
     }
 

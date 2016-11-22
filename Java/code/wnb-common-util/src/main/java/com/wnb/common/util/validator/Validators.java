@@ -8,6 +8,10 @@ public class Validators {
         return new GenericValidator<T>(obj);
     }
 
+    public static <I extends Iterable<E>, E> IterableValidator<I, E> is(I iterable) {
+        return new IterableValidator<I, E>(iterable);
+    }
+
     public static <C extends Collection<E>, E> CollectionValidator<C, E> is(C collection) {
         return new CollectionValidator<C, E>(collection);
     }

@@ -18,6 +18,6 @@ public class ArrayValidator<T> extends GenericValidator<T[]> {
     }
 
     public boolean contains(T element) {
-        return is(Arrays.asList(value)).contains(element);
+        return notEmpty() && is(Arrays.asList(value)).contains(element);
     }
 }
