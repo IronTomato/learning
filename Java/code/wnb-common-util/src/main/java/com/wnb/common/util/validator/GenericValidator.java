@@ -1,47 +1,37 @@
 package com.wnb.common.util.validator;
 
+
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Map;
 
-import static com.wnb.common.util.validator.Validators.*;
+public interface GenericValidator<T> {
 
-public class GenericValidator<T> {
-    protected T value;
 
-    public GenericValidator(T value) {
-        this.value = value;
-    }
+    boolean notNull();
 
-    public boolean notNull() {
-        return value != null;
-    }
+    boolean isNull();
 
-    public boolean isNull() {
-        return value == null;
-    }
+    <C extends Collection<T>> boolean in(C collection);
 
-    public <C extends Collection<T>> boolean in(C collection) {
-        return is(collection).contains(value);
-    }
+    <M extends Map<T, V>, V> boolean in(M map);
 
-    public <M extends Map<T, V>, V> boolean in(M map) {
-        return is(map).containsKey(value);
-    }
+    boolean in(T[] array);
 
-    public boolean in(T[] array){
-        return is(array).contains(value);
-    }
+    boolean ontOf(T... values);
 
-    public boolean ontOf(T... values){
-        return in(values);
-    }
+    boolean suit(Predicate<T> predicate);
 
-    public boolean suit(Predicate<T> predicate) {
-        return predicate != null && predicate.test(value);
-    }
+    boolean eq(T other);
 
-    public boolean equalTo(T other) {
-        return (isNull() && other == null) || (notNull() && value.equals(other));
-    }
+    boolean eq(T other, Comparator<T> comparator);
+
+    boolean gt(T other, Comparator<T> comparator);
+
+    boolean lt(T other, Comparator<T> comparator);
+
+    boolean gte(T other, Comparator<T> comparator);
+
+    boolean lte(T other, Comparator<T> comparator);
 
 }

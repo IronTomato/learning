@@ -1,4 +1,6 @@
-package com.wnb.common.util.validator;
+package com.wnb.common.util.bool;
+
+import com.wnb.common.util.validator.Predicate;
 
 import java.io.File;
 import java.math.BigDecimal;

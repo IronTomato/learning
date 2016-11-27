@@ -1,19 +1,9 @@
 package com.wnb.common.util.validator;
 
-public class NumberValidator<N extends Number> extends GenericValidator<N> {
-    public NumberValidator(N number) {
-        super(number);
-    }
+public interface NumberValidator<N extends Number> extends GenericValidator<N> {
+    boolean positive();
 
-    public boolean positive(){
-        return notNull() && value.doubleValue() > 0.0;
-    }
+    boolean negative();
 
-    public boolean negative(){
-        return notNull() && value.doubleValue() < 0.0;
-    }
-
-    public boolean zero(){
-        return notNull() && value.doubleValue() == 0.0;
-    }
+    boolean zero();
 }

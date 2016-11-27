@@ -11,6 +11,5 @@ public class CollectionValidatorTest {
     @Test
     public void testContains(){
         Assert.assertFalse(is(new ArrayList<String>()).contains(""));
-
     }
 }

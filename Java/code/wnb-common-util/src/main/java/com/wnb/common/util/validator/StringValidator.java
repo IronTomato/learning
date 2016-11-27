@@ -1,68 +1,24 @@
 package com.wnb.common.util.validator;
 
-import static com.wnb.common.util.validator.Validators.*;
-
-public class StringValidator extends CharSequenceValidator<String> {
+import java.util.regex.Pattern;
 
 
-    public StringValidator(String sequence) {
-        super(sequence);
-    }
+public interface StringValidator extends CharSequenceValidator<String>,ComparableValidator<String> {
+    boolean contains(CharSequence subSequence);
 
-    public boolean blank() {
-        return empty() || value.matches("^\\s*$");
-    }
+    boolean contains(Pattern pattern);
 
-    public boolean notBlank() {
-        return !blank();
-    }
+    boolean containsPattern(String regex);
 
-    public boolean contains(CharSequence subSequence) {
-        return notNull() && subSequence != null && value.contains(subSequence);
-    }
+    boolean in(String s);
 
-    public boolean in(String s) {
-        return is(s).contains(value);
-    }
+    boolean endsWith(String suffix);
 
-    public boolean endsWith(String suffix) {
-        return notNull() && suffix != null && value.endsWith(suffix);
-    }
+    boolean startsWith(String prefix);
 
-    public boolean startsWith(String prefix) {
-        return notNull() && prefix != null && value.startsWith(prefix);
-    }
+    boolean matches(String regex);
 
-    public boolean matches(String regex) {
-        return notNull() && regex != null && value.matches(regex);
-    }
+    boolean matches(Pattern pattern);
 
-    public boolean equalsIgnoreCase(String anotherString) {
-        return notNull() && anotherString != null && value.equalsIgnoreCase(anotherString);
-    }
-
-
-    public boolean canParseInt() {
-        if (isNull()) {
-            return false;
-        }
-        try {
-            Integer.parseInt(value);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    public boolean canParseDouble() {
-        if (isNull()) {
-            return false;
-        }
-        try {
-            Double.parseDouble(value);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+    boolean equalsIgnoreCase(String anotherString);
 }

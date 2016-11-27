@@ -1,15 +1,8 @@
 package com.wnb.common.util.validator;
 
-public class IntegerValidator extends NumberValidator<Integer> {
-    public IntegerValidator(Integer integer) {
-        super(integer);
-    }
+public interface IntegerValidator extends NumberValidator<Integer>,ComparableValidator<Integer> {
 
-    public boolean even(){
-        return notNull() && (value & 1) == 0;
-    }
+    boolean even();
 
-    public boolean odd(){
-        return notNull() && (value & 1) == 1;
-    }
+    boolean odd();
 }
