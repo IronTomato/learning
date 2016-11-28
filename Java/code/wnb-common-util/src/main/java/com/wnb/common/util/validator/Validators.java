@@ -1,7 +1,10 @@
 package com.wnb.common.util.validator;
 
+import com.wnb.common.util.ArrayBoxing;
 import com.wnb.common.util.validator.impl.*;
 
+import java.io.File;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Map;
 
@@ -26,6 +29,10 @@ public class Validators {
         return new DefaultArrayValidator<T>(array);
     }
 
+    public static ArrayValidator<Integer> is(int[] ints) {
+        return new DefaultArrayValidator<Integer>(ArrayBoxing.box(ints));
+    }
+
     public static <T extends Comparable<T>> ComparableValidator<T> is(T comparable) {
         return new DefaultComparableValidator<T>(comparable);
     }
@@ -38,8 +45,12 @@ public class Validators {
         return new DefaultIntegerValidator(integer);
     }
 
-    public static DoubleValidator is(Double doubleValue){
+    public static DoubleValidator is(Double doubleValue) {
         return new DefaultDoubleValidator(doubleValue);
+    }
+
+    public static BigDecimalValidator is(BigDecimal decimal) {
+        return new DefaultBigDecimalValidator(decimal);
     }
 
     public static <S extends CharSequence> CharSequenceValidator<S> is(S charSequence) {
@@ -48,6 +59,10 @@ public class Validators {
 
     public static StringValidator is(String str) {
         return new DefaultStringValidator(str);
+    }
+
+    public static <F extends File> FileValidator<F> is(F file) {
+        return new DefaultFileValidator<F>(file);
     }
 
 
