@@ -2,7 +2,10 @@ package com.wnb.common.util.validator;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static com.wnb.common.util.validator.Validators.is;
+import static com.wnb.common.util.validator.Validators.isAll;
 import static org.junit.Assert.*;
 
 public class StringValidatorTest {
@@ -27,5 +30,10 @@ public class StringValidatorTest {
     public void testLt() {
         assertTrue(is("1").lt("2"));
         assertTrue(is("abc").lt("bcd"));
+    }
+
+    @Test
+    public void testAllNotEmpty(){
+        assertTrue(isAll(Arrays.asList("123","213")).matches("\\d+"));
     }
 }

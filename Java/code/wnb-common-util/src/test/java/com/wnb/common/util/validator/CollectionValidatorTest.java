@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static com.wnb.common.util.validator.Validators.is;
+import static com.wnb.common.util.validator.Validators.*;
 
 public class CollectionValidatorTest {
     @Test
